@@ -1,0 +1,28 @@
+<% @user = User.find(params[:id])%>
+<h3><%= @user.email.split("@").first.capitalize%> Profile</h3>
+
+
+<table>
+  <thead class="user_info">
+    <tr>
+      <th>FirstName</th>
+      <th>Email</th>
+      <th>PinProperty Count</th>
+    </tr>
+  </thead>
+
+  <tbody class="user_info1">
+      <tr>
+        <td><%= @user.email.split("@").first.capitalize %></td>
+        <td><%= @user.email %></td>
+        <td><%= @user.pin_properties.count %></td>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+
+<div class="button">
+  <%= link_to "Assign Pin Picture","assign_picture_to_user/#{@user.id}" %>
+</div>
+

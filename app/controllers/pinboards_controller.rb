@@ -47,6 +47,20 @@ before_action :set_pinboard, only: [:show, :edit, :update, :destroy]
     end
   end
 
+  def get_all_user_details
+      @users = User.all - [User.find_by_email("admin@bitlasoft.com"),User.find_by_email(current_user.email)]
+      render :template => "/pinboards/users_list" 
+  end
+
+def view_my_profile
+  
+end
+
+def block_users
+   @users = User.all - [User.find_by_email(current_user.email)]
+   render :template => "/pinboards/block_users" 
+end
+
   def update
     respond_to do |format|
       if @pin_property.update(idea_params)

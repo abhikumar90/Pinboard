@@ -1,0 +1,26 @@
+<h3>User Details</h3>
+
+<table border=4>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <% #if !user.email == "admin@bitlasoft.com" and current_user.email %>
+           <td><%= user.email %></td>
+         <%# end%>
+
+    <%#= link_to secret_code.code, "#{new_user_registration_path}?id=#{secret_code.id}" %>
+         <td><%= link_to "Block User", block_users_path(:friend_id => user), :method => :post %></td>
+
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>

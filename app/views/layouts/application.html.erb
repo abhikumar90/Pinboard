@@ -25,13 +25,17 @@
       <ul class="nav navbar-nav">
         <li><a href="/pinboards">Pinboard</a></li>
         <li ><%= link_to 'New Pinboard', new_pinboard_path %></li>
+        <li ><%= link_to 'Add Friend', get_all_user_details_path %></li>
+        <% if current_user and current_user.email == "admin@bitlasoft.com" %>
+          <li ><%= link_to 'User List', block_users_path %></li>
+        <% end %>
       </ul>
       <p class="navbar-text pull-right">
         <% if user_signed_in? %>
             Logged in as
             <%= image_tag current_user.gravatar_url, class: 'height-16-px' %>
             <strong><%= current_user.email %></strong>.
-            <%#= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+            <%= link_to 'View Profile', view_my_profile_path, :class => 'navbar-link' %> |
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% else %>
             <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |

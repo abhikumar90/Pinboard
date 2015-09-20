@@ -11,7 +11,23 @@ Rails.application.routes.draw do
 
   resources :pinboards
 
+  resources :friendships
+
   post "/pinboards/new" => "pinboards#create"
+
+  get "/get_all_user_details" =>"pinboards#get_all_user_details"
+
+  get "/view_my_profile" => "pinboards#view_my_profile"
+
+  get "/block_users" => "pinboards#block_users"
+
+  match "/show_user_profile/:id" => "friendships#show_user_profile",:via => [:get,:post]
+
+  match "/delete/:id" => "friendships#destroy",:via => [:get,:post]
+
+  match "/assign_picture_to_user/:id" => "friendships#assign_picture_to_user",:via => [:get,:post]
+
+  #post "" => "friendships#assign_picture_to_user"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
