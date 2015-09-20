@@ -25,9 +25,6 @@ def show_user_profile
  render :template => "/friendships/other_user_details",:locals => { :id => @user }
 end
 
-def assign_picture_to_user
- @user = params[:id]
- render :template => "/friendships/assign_picture_to_user",:locals => { :id => @user }
-end
+
 
 end

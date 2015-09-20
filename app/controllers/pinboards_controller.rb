@@ -3,7 +3,7 @@ before_action :set_pinboard, only: [:show, :edit, :update, :destroy]
 
 
   def index
-    @pin_properties = PinProperty.all
+    @pin_properties = current_user.pin_properties
   end
 
   def show
@@ -29,13 +29,8 @@ before_action :set_pinboard, only: [:show, :edit, :update, :destroy]
     @pin_property = PinProperty.new(pinboard_params)
      @pin_property.user = current_user
 
-    #@saved_item = SavedItem.new
-    ##@saved_item.idea_id = @idea.__id__
-    #@saved_item.user = current_user
-
     respond_to do |format|
       if @pin_property.save
-        #@saved_item.save
         format.html { 
           redirect_to pinboards_path, notice: 'PinProperty was successfully created.' 
         }
@@ -59,6 +54,32 @@ end
 def block_users
    @users = User.all - [User.find_by_email(current_user.email)]
    render :template => "/pinboards/block_users" 
+end
+
+
+def assign_picture_to_user
+ if params[:pinboard]
+     @pin_property = PinProperty.new(pinboard_params)
+     @pin_property.user_id = params[:id]
+    respond_to do |format|
+      if @pin_property.save
+        format.html { 
+          redirect_to pinboards_path, notice: 'Picture is successfully added in your friend pinboard.' 
+        }
+      else
+        format.html {  render :template => "/friendships/assign_picture_to_user"}
+      end
+    end
+  else
+    render :template => "/friendships/assign_picture_to_user"
+  end
+end
+
+def change_user_status
+  @user = User.find(params[:id])
+  @user.status = false
+  @user.save
+  redirect_to "/block_users" ,notice: "#{@user.email} has been blocked."
 end
 
   def update

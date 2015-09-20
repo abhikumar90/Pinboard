@@ -21,11 +21,13 @@ Rails.application.routes.draw do
 
   get "/block_users" => "pinboards#block_users"
 
+  match "/change_user_status/:id" => "pinboards#change_user_status",:via => [:get,:post]
+
   match "/show_user_profile/:id" => "friendships#show_user_profile",:via => [:get,:post]
 
   match "/delete/:id" => "friendships#destroy",:via => [:get,:post]
 
-  match "/assign_picture_to_user/:id" => "friendships#assign_picture_to_user",:via => [:get,:post]
+  match "/show_user_profile/assign_picture_to_user/:id" => "pinboards#assign_picture_to_user",:via => [:get,:post]
 
   #post "" => "friendships#assign_picture_to_user"
   # The priority is based upon order of creation: first created -> highest priority.
