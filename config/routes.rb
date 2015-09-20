@@ -1,10 +1,23 @@
 Rails.application.routes.draw do
+  #get 'pinboards/show'
+
+  #get 'pinboards/index'
+
+  #get 'pinboards/create'
+
+  #get 'pinboards/edit'
+
+  devise_for :users
+
+  resources :pinboards
+
+  post "/pinboards/new" => "pinboards#create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-
+  root :to => redirect('/pinboards')
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
