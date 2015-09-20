@@ -1,28 +1,13 @@
-== README
+#install devise 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##rails g model PinProperty name:string description:text picture:string user_id:integer
 
-Things you may want to cover:
+#rails generate model Friendship user_id:integer friend_id:integer
 
-* Ruby version
+#rails generate controller Friendships
 
-* System dependencies
+#rails generate migration AddStatusToUsers status:boolean
 
-* Configuration
+#rake db:migrate
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+#rake db:seed
