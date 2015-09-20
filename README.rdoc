@@ -21,3 +21,5 @@
 # For User-Friend Relation i am creating one model name==> "Friendships".
 
 #Inside Friendships model i am added two column "friend_id" and "user_id".
+
+# And last (.git) i have commited all code what i have done in this Application.
