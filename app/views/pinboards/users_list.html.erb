@@ -13,7 +13,12 @@
       <tr>
            <td><%= user.email %></td>        
           <td>
-              <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+          <% if user.friends.present? %>
+             <p>Already Assiged</p> 
+          <% else %>
+            <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+          <% end %>
+     
           </td>
 
         </td>
