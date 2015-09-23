@@ -14,7 +14,7 @@
            <td><%= user.email %></td>        
           <td>
           <% if user.friends.present? %>
-             <p>Already Assiged</p> 
+             <p>Already Assigned</p> 
           <% else %>
             <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
           <% end %>
