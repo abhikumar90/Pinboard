@@ -1,3 +1,5 @@
+Demo: https://vast-dusk-7615.herokuapp.com
+
 #install devise 
 
 ##rails g model PinProperty name:string description:text picture:string user_id:integer
@@ -20,6 +22,3 @@
 
 # For User-Friend Relation i am creating one model name==> "Friendships".
 
-#Inside Friendships model i am added two column "friend_id" and "user_id".
-
-# And last (.git) i have commited all code what i have done in this Application.
